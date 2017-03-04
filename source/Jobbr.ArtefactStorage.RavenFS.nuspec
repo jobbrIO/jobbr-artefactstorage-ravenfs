@@ -11,10 +11,13 @@
     <description>Stores Jobbr Artefacts in RavenDB.</description>
     <copyright>Copyright 2017</copyright>
     <dependencies>
+      <dependency id="RavenDB.Client" version="3.5.2" />
+      <dependency id="Jobbr.ComponentModel.ArtefactStorage" version="1.0.0-rc1" />
+      <dependency id="Jobbr.ComponentModel.Registration" version="1.0.0-rc1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="../ilmerged/Jobbr.ArtefactStorage.RavenFS.dll" target="lib\net45"/>
-    <file src="../ilmerged/Jobbr.ArtefactStorage.RavenFS.pdb" target="lib\net45"/>
+    <file src="Jobbr.ArtefactStorage.RavenFS/bin/Release/Jobbr.ArtefactStorage.RavenFS.dll" target="lib\net45"/>
+    <file src="Jobbr.ArtefactStorage.RavenFS/bin/Release/Jobbr.ArtefactStorage.RavenFS.pdb" target="lib\net45"/>
   </files>
 </package>
