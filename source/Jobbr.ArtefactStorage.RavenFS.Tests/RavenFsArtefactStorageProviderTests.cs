@@ -29,8 +29,10 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             };
         }
 
-        private void ConfigureTestStore(EmbeddableDocumentStore documentStore)
+        protected override void ModifyStore(EmbeddableDocumentStore documentStore)
         {
+            base.ModifyStore(documentStore);
+
             documentStore.Configuration.Storage.Voron.AllowOn32Bits = true;
         }
 
