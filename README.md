@@ -1,0 +1,1 @@
+# jobbr-artefactstorage-filesystem [![Build status](https://ci.appveyor.com/api/projects/status/56xfn2pqo6p9s0ls/branch/develop?svg=true)](https://ci.appveyor.com/project/Jobbr/jobbr-artefactstorage-ravenfs/branch/develop)

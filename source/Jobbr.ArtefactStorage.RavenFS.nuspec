@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Jobbr.ArtefactStorage.RavenFS</id>
+    <version>$version$</version>
+    <authors>Jobbr</authors>
+    <owners>Jobbr</owners>
+    <projectUrl>http://github.com/jobbrIO/jobbr-artefactstorage-ravenfs</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/jobbrIO/jobbr-artefactstorage-ravenfs/develop/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Stores Jobbr Artefacts in RavenDB.</description>
+    <copyright>Copyright 2017</copyright>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="../ilmerged/Jobbr.ArtefactStorage.RavenFS.dll" target="lib\net45"/>
+    <file src="../ilmerged/Jobbr.ArtefactStorage.RavenFS.pdb" target="lib\net45"/>
+  </files>
+</package>
