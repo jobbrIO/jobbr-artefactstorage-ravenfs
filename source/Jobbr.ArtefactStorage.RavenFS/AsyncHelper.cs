@@ -19,5 +19,14 @@ namespace Jobbr.ArtefactStorage.RavenFS
                 .GetAwaiter()
                 .GetResult();
         }
+
+        public static void RunSync(Func<Task> func)
+        {
+            AsyncHelper.TaskFactory
+              .StartNew<Task>(func)
+              .Unwrap()
+              .GetAwaiter()
+              .GetResult();
+        }
     }
 }

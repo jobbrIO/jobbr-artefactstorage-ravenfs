@@ -22,7 +22,12 @@ namespace Jobbr.ArtefactStorage.RavenFS
             _filesStore.Initialize();
         }
 
-        public async void Save(string container, string fileName, Stream content)
+        public void Save(string container, string fileName, Stream content)
+        {
+            AsyncHelper.RunSync(() => SaveAsync(container, fileName, content));
+        }
+
+        public async Task SaveAsync(string container, string fileName, Stream content)
         {
             using (var session = _filesStore.OpenAsyncSession())
             {
