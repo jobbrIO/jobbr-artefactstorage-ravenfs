@@ -28,6 +28,10 @@ after_build:
   - cmd: nuget pack source\Jobbr.ArtefactStorage.RavenFS.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
   - cmd: appveyor PushArtifact "Jobbr.ArtefactStorage.RavenFS.%GitVersion_NuGetVersion%.nupkg"
 
+test:
+  assemblies:
+    - '**\*Jobbr.ArtefactStorage.RavenFS.Tests.dll'
+
 deploy:
 - provider: NuGet
   server: https://nuget.org
