@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Raven.Client.Document;
 using Raven.Client.Embedded;
+using Raven.Database.Config;
 using Raven.Tests.Helpers;
 
 namespace Jobbr.ArtefactStorage.RavenFS.Tests
@@ -29,11 +30,11 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             };
         }
 
-        protected override void ModifyStore(EmbeddableDocumentStore documentStore)
+        protected override void ModifyConfiguration(InMemoryRavenConfiguration configuration)
         {
-            base.ModifyStore(documentStore);
+            configuration.Storage.Voron.AllowOn32Bits = true;
 
-            documentStore.Configuration.Storage.Voron.AllowOn32Bits = true;
+            base.ModifyConfiguration(configuration);
         }
 
         [TestMethod]
@@ -50,7 +51,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
         }
 
         [TestMethod]
-        public async Task GivenOneFileInContainer_WhenQueringAllFilesFromContainer_ReturnsThatFile()
+        public void GivenOneFileInContainer_WhenQueringAllFilesFromContainer_ReturnsThatFile()
         {
             GivenRavenFs();
             GivenRavenFsConfiguration();
