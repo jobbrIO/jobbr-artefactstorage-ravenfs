@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Raven.Client.Document;
-using Raven.Client.Embedded;
 using Raven.Database.Config;
 using Raven.Tests.Helpers;
 
