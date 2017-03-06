@@ -14,7 +14,8 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
 
         private void GivenRavenFs()
         {
-            _documentStore = NewRemoteDocumentStore();
+            _documentStore = NewRemoteDocumentStore(requestedStorage: "esent");
+            
             _documentStore.Initialize();
         }
 
