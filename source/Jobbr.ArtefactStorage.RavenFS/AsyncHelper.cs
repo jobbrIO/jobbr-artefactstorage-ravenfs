@@ -13,7 +13,7 @@ namespace Jobbr.ArtefactStorage.RavenFS
 
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
         {
-            return AsyncHelper.TaskFactory
+            return TaskFactory
                 .StartNew<Task<TResult>>(func)
                 .Unwrap<TResult>()
                 .GetAwaiter()
@@ -22,7 +22,7 @@ namespace Jobbr.ArtefactStorage.RavenFS
 
         public static void RunSync(Func<Task> func)
         {
-            AsyncHelper.TaskFactory
+            TaskFactory
               .StartNew<Task>(func)
               .Unwrap()
               .GetAwaiter()
