@@ -8,6 +8,7 @@ branches:
 
 install:
   - choco install gitversion.portable -pre -y
+  - ps: Install-WindowsFeature -Name "RDC"
 
 assembly_info:
   patch: false
