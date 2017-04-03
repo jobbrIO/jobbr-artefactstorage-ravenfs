@@ -42,7 +42,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             GivenRavenFsConfiguration();
 
             var storageProvider = new RavenFsArtefactStorageProvider(_ravenFsConfiguration);
-
+         
             var artefacts = storageProvider.GetArtefacts("non-existing-container");
 
             Assert.AreEqual(0, artefacts.Count);
@@ -64,10 +64,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             var test = storageProvider.GetArtefacts("test-container");
 
             Assert.AreEqual(1, test.Count, "file1.txt must be in the list");
-
-            var textLoaded = System.Text.Encoding.UTF8.GetString(test[0].Data.ReadInMemoryToEnd());
-
-            Assert.AreEqual(text, textLoaded);
+            Assert.AreEqual("file1.txt", test[0].FileName);
         }
 
         [TestMethod]
@@ -88,12 +85,6 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             var test = storageProvider.GetArtefacts("test-container");
 
             Assert.AreEqual(2, test.Count, "both files must be in the list");
-
-            var text1Loaded = System.Text.Encoding.UTF8.GetString(test[0].Data.ReadInMemoryToEnd());
-            var text2Loaded = System.Text.Encoding.UTF8.GetString(test[1].Data.ReadInMemoryToEnd());
-
-            Assert.AreEqual(text1, text1Loaded);
-            Assert.AreEqual(text2, text2Loaded);
         }
 
         [TestMethod]
@@ -114,6 +105,44 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             var test = storageProvider.GetArtefacts("another-container");
 
             Assert.AreEqual(0, test.Count, "none of the items in test-container should be in the list");
+        }
+
+        [TestMethod]
+        public void GivenPlainTextFile_WhenQueryingThatFile_MimeTypeIsProperlySet()
+        {
+            GivenRavenFs();
+            GivenRavenFsConfiguration();
+
+            var storageProvider = new RavenFsArtefactStorageProvider(_ravenFsConfiguration);
+
+            const string text = "lorem ipsum";
+            storageProvider.Save("test-container", "file1.txt", new MemoryStream(System.Text.Encoding.UTF8.GetBytes(text)));
+
+            WaitForIndexing(_documentStore);
+
+            var test = storageProvider.GetArtefacts("test-container");
+
+            Assert.AreEqual(1, test.Count, "file1.txt must be in the list");
+            Assert.AreEqual("text/plain", test[0].MimeType);
+        }
+
+        [TestMethod]
+        public void GivenPlainTextFileWithSize11_WhenQueryingThatFile_SizeIsProperlySet()
+        {
+            GivenRavenFs();
+            GivenRavenFsConfiguration();
+
+            var storageProvider = new RavenFsArtefactStorageProvider(_ravenFsConfiguration);
+
+            const string text = "lorem ipsum";
+            storageProvider.Save("test-container", "file1.txt", new MemoryStream(System.Text.Encoding.UTF8.GetBytes(text)));
+
+            WaitForIndexing(_documentStore);
+
+            var test = storageProvider.GetArtefacts("test-container");
+
+            Assert.AreEqual(1, test.Count, "file1.txt must be in the list");
+            Assert.AreEqual(11, test[0].Size);
         }
     }
 }

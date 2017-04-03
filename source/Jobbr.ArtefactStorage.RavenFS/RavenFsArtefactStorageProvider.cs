@@ -2,6 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using Jobbr.ComponentModel.ArtefactStorage;
+using Jobbr.ComponentModel.ArtefactStorage.Model;
+using MimeTypes;
 using Raven.Client.FileSystem;
 using Raven.Json.Linq;
 
@@ -59,7 +61,7 @@ namespace Jobbr.ArtefactStorage.RavenFS
 
         public List<JobbrArtefact> GetArtefacts(string container)
         {
-            return AsyncHelper.RunSync<List<JobbrArtefact>>(() => GetArtefactsAsync(container));
+            return AsyncHelper.RunSync(() => GetArtefactsAsync(container));
         }
 
         public async Task<List<JobbrArtefact>> GetArtefactsAsync(string container)
@@ -72,10 +74,20 @@ namespace Jobbr.ArtefactStorage.RavenFS
 
                 var list = new List<JobbrArtefact>();
 
+                // ReSharper disable once LoopCanBeConvertedToQuery
                 foreach (var file in files)
                 {
-                    var stream = await session.DownloadAsync(file.FullPath);
-                    list.Add(new JobbrArtefact { Data = stream, FileName = file.Metadata["Name"].ToString() });
+                    var fileName = file.Metadata["Name"].Value<string>();
+                    var size = file.Metadata["RavenFS-Size"].Value<long>();
+                    var extension = fileName.ExtractExtension();
+                    var mimeType = MimeTypeMap.GetMimeType(extension);
+
+                    list.Add(new JobbrArtefact
+                    {
+                        FileName = fileName,
+                        Size = size,
+                        MimeType = mimeType
+                    });
                 }
 
                 return list;
@@ -84,7 +96,7 @@ namespace Jobbr.ArtefactStorage.RavenFS
 
         public Stream Load(string container, string fileName)
         {
-            return AsyncHelper.RunSync<Stream>(() => LoadAsync(container, fileName));
+            return AsyncHelper.RunSync(() => LoadAsync(container, fileName));
         }
     }
 }
