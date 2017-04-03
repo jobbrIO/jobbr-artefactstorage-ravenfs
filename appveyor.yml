@@ -25,7 +25,6 @@ build:
   project: source/Jobbr.ArtefactStorage.RavenFS.sln
 
 after_build:
-  - cmd: nuget install ILMerge -ExcludeVersion
   - cmd: nuget pack source\Jobbr.ArtefactStorage.RavenFS.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
   - cmd: appveyor PushArtifact "Jobbr.ArtefactStorage.RavenFS.%GitVersion_NuGetVersion%.nupkg"
 
