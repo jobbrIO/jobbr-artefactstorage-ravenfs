@@ -43,7 +43,6 @@ This extension is built using the following great open source projects
 
 # Credits
 This application was built by the following awesome developers:
-* Michael Schnyder
 * Oliver Zürcher
 
 [ravenfs-link-build]:            https://ci.appveyor.com/project/Jobbr/jobbr-artefactstorage-ravenfs         
