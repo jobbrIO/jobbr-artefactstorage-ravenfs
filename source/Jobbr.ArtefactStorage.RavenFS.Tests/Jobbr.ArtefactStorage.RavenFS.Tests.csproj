@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="ExposeStorageProvider.cs" />
     <Compile Include="IntegrationTestBase.cs" />
+    <Compile Include="PackagingTests.cs" />
     <Compile Include="ServerRegistrationTests.cs" />
     <Compile Include="StreamExtensions.cs" />
     <Compile Include="RavenFsArtefactStorageProviderTests.cs" />
@@ -101,6 +102,10 @@
     <ProjectReference Include="..\Jobbr.ArtefactStorage.RavenFS\Jobbr.ArtefactStorage.RavenFS.csproj">
       <Project>{a0b35be9-e134-4c81-9976-ac08850218d1}</Project>
       <Name>Jobbr.ArtefactStorage.RavenFS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\submodules\devsupport\src\Jobbr.DevSupport.ReferencedVersionAsserter\Jobbr.DevSupport.ReferencedVersionAsserter.csproj">
+      <Project>{D7C78DBD-D440-4D0C-B9A9-AD8B7473364A}</Project>
+      <Name>Jobbr.DevSupport.ReferencedVersionAsserter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
