@@ -26,8 +26,8 @@ build:
   project: source/Jobbr.ArtefactStorage.RavenFS.sln
 
 after_build:
-  - cmd: nuget pack source\Jobbr.ArtefactStorage.RavenFS.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
-  - cmd: appveyor PushArtifact "Jobbr.ArtefactStorage.RavenFS.%GitVersion_NuGetVersion%.nupkg"
+  - cmd: nuget pack source\Jobbr.ArtefactStorage.RavenFS.nuspec -version "%GitVersion_SemVer%" -prop "target=%CONFIGURATION%"
+  - cmd: appveyor PushArtifact "Jobbr.ArtefactStorage.RavenFS.%GitVersion_SemVer%.nupkg"
 
 test:
   assemblies:
