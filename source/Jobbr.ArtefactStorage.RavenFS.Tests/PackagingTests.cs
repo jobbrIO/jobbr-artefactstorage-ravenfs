@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Jobbr.DevSupport.ReferencedVersionAsserter;
+﻿using Jobbr.DevSupport.ReferencedVersionAsserter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Jobbr.ArtefactStorage.RavenFS.Tests
@@ -7,8 +6,6 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
     [TestClass]
     public class PackagingTests
     {
-        private readonly bool isPre = Assembly.GetExecutingAssembly().GetInformalVersion().Contains("-");
-
         [TestMethod]
         public void Feature_NuSpec_IsCompilant()
         {
@@ -19,6 +16,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
             asserter.Add(new PackageExistsInBothRule("RavenDB.Client"));
             asserter.Add(new AllowNonBreakingChangesRule("RavenDB.Client*"));
             asserter.Add(new VersionIsIncludedInRange("Jobbr.ComponentModel.*"));
+            asserter.Add(new OnlyAllowBugfixesRule("Jobbr.ComponentModel.*"));
             asserter.Add(new NoMajorChangesInNuSpec("Jobbr.*"));
             asserter.Add(new NoMajorChangesInNuSpec("RavenDB.Client*"));
 

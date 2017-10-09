@@ -17,7 +17,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="Jobbr.ArtefactStorage.RavenFS/bin/Release/Jobbr.ArtefactStorage.RavenFS.dll" target="lib\net45"/>
-    <file src="Jobbr.ArtefactStorage.RavenFS/bin/Release/Jobbr.ArtefactStorage.RavenFS.pdb" target="lib\net45"/>
+    <file src="Jobbr.ArtefactStorage.RavenFS/bin/Release/Jobbr.ArtefactStorage.RavenFS.dll" target="lib\net462"/>
+    <file src="Jobbr.ArtefactStorage.RavenFS/bin/Release/Jobbr.ArtefactStorage.RavenFS.pdb" target="lib\net462"/>
   </files>
 </package>
