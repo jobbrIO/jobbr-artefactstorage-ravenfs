@@ -10,6 +10,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Stores Jobbr Artefacts in RavenDB (RavenFS).</description>
     <copyright>Copyright 2017</copyright>
+    <iconUrl>https://github.com/jobbrIO/artwork/raw/master/build/icons/icon_detailed_256_dark.png</iconUrl>
     <dependencies>
       <dependency id="RavenDB.Client" version="[3.5.4,4.0.0)" />
       <dependency id="Jobbr.ComponentModel.ArtefactStorage" version="[1,1.1)" />
