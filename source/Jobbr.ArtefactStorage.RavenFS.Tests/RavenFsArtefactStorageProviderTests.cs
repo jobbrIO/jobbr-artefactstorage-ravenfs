@@ -20,7 +20,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
         }
 
         [TestMethod]
-        public void GivenOneFileInContainer_WhenQueringAllFilesFromContainer_ReturnsThatFile()
+        public void GivenOneFileInContainer_WhenQueryingAllFilesFromContainer_ReturnsThatFile()
         {
             GivenRavenFs();
             GivenRavenFsConfiguration();
@@ -39,7 +39,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
         }
 
         [TestMethod]
-        public void GivenMultipleFilesInContainer_WhenQueringAllFilesFromContainer_ReturnsAllFiles()
+        public void GivenMultipleFilesInContainer_WhenQueryingAllFilesFromContainer_ReturnsAllFiles()
         {
             GivenRavenFs();
             GivenRavenFsConfiguration();
@@ -59,7 +59,7 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
         }
 
         [TestMethod]
-        public void GivenMultipleFilesInContainer_WhenQueringAllFilesFromAnotherContainer_ReturnsNoFiles()
+        public void GivenMultipleFilesInContainer_WhenQueryingAllFilesFromAnotherContainer_ReturnsNoFiles()
         {
             GivenRavenFs();
             GivenRavenFsConfiguration();
