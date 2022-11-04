@@ -16,6 +16,8 @@ environment:
 install:
   - git submodule update --init --recursive
   - choco install gitversion.portable --version 5.10.3 -y
+  - ps: Invoke-WebRequest -OutFile C:\tools\nuget.exe -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe # Visual Studio 2017 image doesn't ship with the latest NuGet version
+  - ps: $env:Path = "C:\tools;" + $env:Path
   - ps: Install-WindowsFeature -Name "RDC"
   - ps: Get-WindowsFeature -Name "RDC"
 

@@ -7,9 +7,9 @@ namespace Jobbr.ArtefactStorage.RavenFS.Tests
     public class PackagingTests
     {
         [TestMethod]
-        public void Feature_NuSpec_IsCompilant()
+        public void Feature_NuSpec_IsCompliant()
         {
-            var asserter = new Asserter(Asserter.ResolvePackagesConfig("Jobbr.ArtefactStorage.RavenFS"), Asserter.ResolveRootFile("Jobbr.ArtefactStorage.RavenFS.nuspec"));
+            var asserter = new Asserter(Asserter.ResolveProjectFile("Jobbr.ArtefactStorage.RavenFS", "Jobbr.ArtefactStorage.RavenFS.csproj"), Asserter.ResolveRootFile("Jobbr.ArtefactStorage.RavenFS.nuspec"));
 
             asserter.Add(new PackageExistsInBothRule("Jobbr.ComponentModel.Registration"));
             asserter.Add(new PackageExistsInBothRule("Jobbr.ComponentModel.ArtefactStorage"));
